@@ -208,7 +208,7 @@
     <div class="header-actions">
       <a href="#"><i class="fa fa-user"></i> Login</a>
       <a href="#"><i class="fa fa-user-plus"></i> Register</a>
-      <a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+      <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
   </header>
 
@@ -253,7 +253,7 @@
 
       products.slice(0, 18).forEach((item) => {
         grid.innerHTML += `
-          <div class="product-card">
+          <div class="product-card" data-id="${item.id}">
             <div class="image-wrap">
               <img src="${item.image}">
             </div>
@@ -294,6 +294,43 @@
     });
 
     getProducts();
+
+    // Function to update cart counter
+    function updateCartCounter() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartLink = document.getElementById('cartLink');
+      if (cartLink) {
+        cartLink.innerHTML = `<i class="fa fa-shopping-cart"></i> Cart (${totalItems})`;
+      }
+    }
+
+    // Add to cart functionality
+    document.addEventListener('click', (e) => {
+      if (e.target.textContent === 'Add To Cart') {
+        const card = e.target.closest('.product-card');
+        const id = parseInt(card.getAttribute('data-id'));
+        const product = allProducts.find(p => p.id === id);
+
+        if (!product) return; // Safety check
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(item => item.id === id);
+
+        if (existingItem) {
+          existingItem.qty += 1;
+        } else {
+          cart.push({ id: product.id, title: product.title, price: product.price, image: product.image, qty: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCounter();
+        alert('Item added to cart!');
+      }
+    });
+
+    // Update cart counter on page load
+    document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
 </body>
 </html>

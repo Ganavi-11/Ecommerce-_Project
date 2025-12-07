@@ -250,7 +250,7 @@
     <div class="header-actions">
       <a href="#"><i class="fa fa-user"></i> Login</a>
       <a href="./login.html"><i class="fa fa-user-plus"></i> Register</a>
-      <a href="#"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
+      <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
   </header>
 
@@ -308,7 +308,7 @@
     function display(products) {
       grid.innerHTML = "";
 
-      products.slice(0, 18).forEach((item) => {
+      products.slice(0, 18).forEach((item, index) => {
         grid.innerHTML += `
           <div class="product-card">
             <div class="image-wrap">
@@ -318,8 +318,8 @@
             <p>${shorten(item.description, 70)}</p>
             <div class="price">$ ${item.price}</div>
             <div class="btns">
-              <button>Details</button>
-              <button>Add To Cart</button>
+              <button onclick="showDetails(${item.id})">Details</button>
+              <button onclick="addToCart(${item.id}, '${item.title}', '${item.image}', ${item.price})">Add To Cart</button>
             </div>
           </div>
         `;
@@ -351,6 +351,38 @@
     });
 
     getProducts();
+
+    // Function to update cart counter
+    function updateCartCounter() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartLink = document.getElementById('cartLink');
+      if (cartLink) {
+        cartLink.innerHTML = `<i class="fa fa-shopping-cart"></i> Cart (${totalItems})`;
+      }
+    }
+
+    // Update cart counter on page load
+    document.addEventListener('DOMContentLoaded', updateCartCounter);
+
+    // Function to add item to cart
+    function addToCart(id, title, image, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingItem = cart.find(item => item.id === id);
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        cart.push({ id, title, image, price, qty: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCounter();
+      alert(`${title} added to cart!`);
+    }
+
+    // Function to show details (placeholder)
+    function showDetails(id) {
+      alert(`Details for product ID: ${id}`);
+    }
   </script>
 </body>
 

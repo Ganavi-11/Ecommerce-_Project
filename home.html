@@ -6,7 +6,6 @@
   <title>Ecommerce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
@@ -21,6 +20,7 @@
       background: #fff;
     }
 
+    /* header part */
     header {
       position: fixed;
       top: 0;
@@ -248,8 +248,8 @@
     </nav>
 
     <div class="header-actions">
-      <a href="#"><i class="fa fa-user"></i> Login</a>
-      <a href="./login.html"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="./login.html"><i class="fa fa-user"></i> Login</a>
+      <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
       <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
   </header>
@@ -291,6 +291,7 @@
   </footer>
 
   <script>
+
     const grid = document.getElementById("productGrid");
     const buttons = document.querySelectorAll(".filterButtons button");
     let allProducts = [];
@@ -352,7 +353,8 @@
 
     getProducts();
 
-    // Function to update cart counter
+    // Function part for  update cart counter
+
     function updateCartCounter() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -362,7 +364,8 @@
       }
     }
 
-    // Update cart counter on page load
+    // Update cart counter 
+
     document.addEventListener('DOMContentLoaded', updateCartCounter);
 
     // Function to add item to cart
@@ -379,7 +382,7 @@
       alert(`${title} added to cart!`);
     }
 
-    // Function to show details (placeholder)
+    // Function to show details 
     function showDetails(id) {
       alert(`Details for product ID: ${id}`);
     }

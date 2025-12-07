@@ -198,17 +198,18 @@
     <div class="logo">Ecommerce</div>
 
     <nav>
-      <a href="./index.html">Home</a>
+      <a href="./home.html">Home</a>
       <a href="./products.html">Products</a>
       <a href="./about.html">About</a>
       <a href="./contact.html">Contact</a>
     </nav>
 
     <div class="header-actions">
-      <a href="#"><i class="fa fa-user"></i> Login</a>
-      <a href="#"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="./login.html"><i class="fa fa-user"></i> Login</a>
+      <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
       <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
+
   </header>
 <div class="cart-container">
   <div class="cart-items">
@@ -306,7 +307,7 @@
     }
   }
 
-  // Update cart counter on page load
+  // Update cart counter 
   document.addEventListener('DOMContentLoaded', updateCartCounter);
 
   renderCart();

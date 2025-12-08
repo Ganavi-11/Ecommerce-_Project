@@ -26,9 +26,22 @@
       <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
       <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
+
+    <div class="hamburger" id="hamburger">
+      <i class="fa fa-bars"></i>
+    </div>
   </header>
 
   <div class="container">
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./home.html">Home</a>
+      <a href="./products.html">Products</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./login.html"><i class="fa fa-user"></i> Login</a>
+      <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="./cart.html" id="cartLinkMobile"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
+    </div>
 
     <!-- PRODUCTS -->
     <div class="Products">
@@ -59,6 +72,14 @@
     const shorten = (text, n) => {
       return text.length > n ? text.slice(0, n) + "..." : text;
     };
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
 
     async function getProducts() {
       const res = await fetch("https://fakestoreapi.com/products");

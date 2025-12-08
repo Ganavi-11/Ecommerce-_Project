@@ -145,5 +145,139 @@ footer span {
     font-size: 20px;
     font-weight: 700;
     text-decoration: underline;
+}
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #555;
+}
+
+.mobile-menu {
+    display: none;
+    width: 100%;
+    background: black;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    padding: 10px 0;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid #333;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* Media Queries */
+
+/* Large screens (up to 1440px) */
+@media (max-width: 1440px) {
+    .contact-form form {
+        width: 350px;
+    }
+}
+
+/* Laptops (up to 1024px) */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .container {
+        padding: 90px 20px 40px;
+    }
+
+    .contact-form form {
+        width: 300px;
+    }
+}
+
+/* Tablets (up to 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 15px;
+        justify-content: space-between;
+    }
+
+    nav, .header-actions {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .container {
+        padding: 90px 15px 40px;
+    }
+
+    .contact h2 {
+        font-size: 22px;
+    }
+
+    .contact-form form {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Mobile (up to 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 10px;
+    }
+
+    .logo a {
+        font-size: 18px;
+    }
+
+    .hamburger {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 80px 10px 20px;
+    }
+
+    .contact {
+        margin-top: 50px;
+    }
+
+    .contact h2 {
+        font-size: 20px;
+    }
+
+    .contact-form form {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+    }
+
+    .contact-form button {
+        font-size: 14px;
+        padding: 8px 25px;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+
+    footer span {
+        font-size: 16px;
+    }
 }

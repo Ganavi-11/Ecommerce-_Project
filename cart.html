@@ -27,8 +27,22 @@
       <a href="./cart.html" id="cartLink"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
     </div>
 
+    <div class="hamburger" id="hamburger">
+      <i class="fa fa-bars"></i>
+    </div>
   </header>
+
   <div class="cart-container">
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./home.html">Home</a>
+      <a href="./products.html">Products</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./login.html"><i class="fa fa-user"></i> Login</a>
+      <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="./cart.html" id="cartLinkMobile"><i class="fa fa-shopping-cart"></i> Cart (0)</a>
+    </div>
     <div class="cart-items">
       <h2 id="cartTitle">Your Cart</h2>
       <div id="cartItems"></div>
@@ -126,8 +140,37 @@
       }
     }
 
-    // Update cart counter 
+    // Function to update cart counter
+    function updateCartCounter() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartLink = document.getElementById('cartLink');
+      if (cartLink) {
+        cartLink.innerHTML = `<i class="fa fa-shopping-cart"></i> Cart (${totalItems})`;
+      }
+      const cartLinkMobile = document.getElementById('cartLinkMobile');
+      if (cartLinkMobile) {
+        cartLinkMobile.innerHTML = `<i class="fa fa-shopping-cart"></i> Cart (${totalItems})`;
+      }
+    }
+
+    // Update cart counter
     document.addEventListener('DOMContentLoaded', updateCartCounter);
+
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Hide mobile menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileMenu.classList.remove('active');
+      }
+    });
 
     renderCart();
   </script>

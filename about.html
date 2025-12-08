@@ -25,9 +25,23 @@
       <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
       <a href="./cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
     </div>
+
+    <div class="hamburger" id="hamburger">
+      <i class="fa fa-bars"></i>
+    </div>
   </header>
 
   <div class="container">
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./home.html">Home</a>
+      <a href="./products.html">Products</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./login.html"><i class="fa fa-user"></i> Login</a>
+      <a href="./register.html"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="./cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+    </div>
     <!-- About us para -->
     <div class="aboutUs">
       <h2>About Us</h2>
@@ -83,6 +97,22 @@
     </footer>
   </div>
 
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Hide mobile menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 
 </html>

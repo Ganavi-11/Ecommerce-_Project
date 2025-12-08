@@ -49,8 +49,15 @@ nav a {
 .header-actions a {
     text-decoration: none;
     color: #555;
+    padding: 10px;
+   
 }
 
+.header-actions a:hover {
+    background: black;
+    color: white;
+    border-radius: 6px;
+}
 /* cart */
 .cart-container {
     padding: 120px 40px 60px;
@@ -165,6 +172,24 @@ nav a {
     text-align: center;
     margin-top: 50px;
     font-size: 18px;
+}
+
+.continue-shopping-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.continue-shopping-btn:hover {
+    background: white;
+    color: black;
 }
 
 

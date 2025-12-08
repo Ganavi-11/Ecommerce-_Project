@@ -50,8 +50,15 @@ nav a {
 .header-actions a {
     text-decoration: none;
     color: #555;
+    padding: 10px;
+   
 }
 
+.header-actions a:hover {
+    background: black;
+    color: white;
+    border-radius: 6px;
+}
 .container {
     padding: 60px 40px 40px;
 }

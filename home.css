@@ -23,7 +23,9 @@ header {
     border-bottom: 1px solid #eee;
 }
 
-.logo {
+.logo a {
+    text-decoration: none;
+    color:black;
     font-size: 22px;
     font-weight: 600;
 }

@@ -10,7 +10,7 @@
       let shipping = 10;
 
       if (cart.length === 0) {
-        cartDiv.innerHTML = "<p class='empty'>Your cart is empty </p><button class='continue-shopping-btn' onclick=\"window.location.href='./home.html'\">Continue Shopping</button>";
+        cartDiv.innerHTML = "<p class='empty'>Your cart is empty </p><button class='continue-shopping-btn' onclick=\"window.location.href='./index.html'\">Continue Shopping</button>";
         orderSummaryDiv.innerHTML = "";
         return;
       }
